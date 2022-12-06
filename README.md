@@ -69,8 +69,6 @@ The motivation to create this project was to learn and practice using the back e
 - Mongoose to implement constraints on the collections
 - Express library (gives more ability to use params, middleware, route)
 
-## Repository overview 🗂
-
 ## More resources 📃
 
 - <a href="https://www.upwork.com/resources/beginners-guide-back-end-development#servers">Beginner's Guide to Back-end Development</a>
