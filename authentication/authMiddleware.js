@@ -22,8 +22,8 @@ module.exports.authRegister = async (req, res, next) => {
   }
 };
 module.exports.authLoginWithJwt = async (req, res, next) => {
-  const { firstName, password } = req.body;
-  const user = await UserModel.findOne({ firstName });
+  const { email, password } = req.body;
+  const user = await UserModel.findOne({ email: email });
   const isPasswordCorrect = compareHash(password, user.password);
 
   if (!user) {
@@ -38,11 +38,11 @@ module.exports.authLoginWithJwt = async (req, res, next) => {
       message: "Invalid Password",
     });
   }
-  const token = tokenGenerate(firstName, user._id);
+  const token = tokenGenerate(email, user._id);
   return res.status(200).json({
     success: true,
     data: {
-      firstName: user.firstName,
+      email: user.email,
       token: token,
     },
   });

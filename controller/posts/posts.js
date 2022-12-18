@@ -3,13 +3,12 @@ const router = express.Router();
 const Post = require("../../models/postsSchema");
 const Comment = require("../../models/commentSchema");
 exports.getPosts = async (request, response, next) => {
-  const posts = Post.find({}, (err, allPosts) => {
+  Post.find({}, (err, allPosts) => {
     if (err) {
       response.status(500).json({ message: "Cannot retrieve data" });
     }
     response.status(200).json(allPosts);
   });
-  console.log(posts);
 };
 exports.getUserPosts = async (request, response, next) => {
   const { userId } = request.params;
@@ -60,7 +59,6 @@ exports.getPost = async (request, response, next) => {
 
 exports.createPost = async (request, response, next) => {
   const body = request.body;
-  console.log(body);
   try {
     const createdPost = await Post.create({ ...body });
     return response.status(201).json(createdPost);
