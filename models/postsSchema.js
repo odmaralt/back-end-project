@@ -4,13 +4,13 @@ const PostSchema = new Schema({
   title: {
     type: String,
     required: [true, "A title is required"],
-    minLength: [10, "Your title must be at least 10 characters"],
+    minLength: [1, "Your title must be at least 1 character"],
     maxLength: [100, "Your title must be less than a 100 characters"],
   },
   text: {
     type: String,
     required: [true, "Text is required"],
-    minLength: [20, "Your text must be at least 20 characters"],
+    minLength: [1, "Your text must be at least 1 character"],
     maxLength: [200, "Your text must be less than 200 characters"],
   },
   image: {

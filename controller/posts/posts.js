@@ -30,12 +30,13 @@ exports.getUserPost = async (request, response, next) => {
 
 exports.getPostComments = async (request, response, next) => {
   const { postId } = request.params;
-  Comment.find({ postId: postId }, (err, comments) => {
-    if (err) {
-      response.status(500).json({ message: "Cant retrieve the user posts" });
-    }
+
+  try {
+    const comments = await Comment.find({ postId: postId }).populate("ownerId");
     response.status(200).json(comments);
-  });
+  } catch (err) {
+    response.status(500).json({ message: "Cant retrieve the user posts" });
+  }
 };
 
 exports.getPostComment = async (request, response, next) => {

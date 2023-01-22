@@ -52,13 +52,16 @@ exports.updateUser = async (request, response, next) => {
 };
 exports.createUser = async (request, response, next) => {
   const body = request.body;
+  if (!body.password) {
+    return response.status(404).json({ message: "Bad request" });
+  }
   const hashedPassword = hashFunction(body.password);
   try {
     const createdUser = await User.create({
       ...body,
       password: hashedPassword,
     });
-    return rresponsees.status(201).json(createdUser);
+    return response.status(201).json(createdUser);
   } catch (err) {
     return response.status(500).json({ message: err });
   }
