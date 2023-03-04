@@ -2,7 +2,6 @@ const express = require("express");
 const { hashFunction } = require("../../bcrypt/bcrypt");
 const router = express.Router();
 const User = require("../../models/usersSchema");
-
 exports.getUsers = async (request, response, next) => {
   try {
     const users = await User.find();

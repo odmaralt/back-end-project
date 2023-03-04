@@ -27,7 +27,6 @@ exports.getUserPost = async (request, response, next) => {
     response.status(200).json(post);
   });
 };
-
 exports.getPostComments = async (request, response, next) => {
   const { postId } = request.params;
 
