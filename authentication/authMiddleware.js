@@ -7,6 +7,7 @@ module.exports.authRegister = async (req, res, next) => {
     const user = await UserModel.findOne({
       $or: [{ firstName: req.body.firstName }, { email: req.body.email }],
     });
+    console.log(user)
     if (user) {
       res
         .status(400)
